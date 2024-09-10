@@ -8,7 +8,7 @@ env:
   PULUMI_STACK: aws_s3
 jobs:
   setup-and-preview:
-    runs-on: ubuntu-latest
+    runs-on:  pulumi/pulumi
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -20,7 +20,7 @@ jobs:
           pip install pulumi pulumi_aws
       - name: Login to Pulumi
         run: |
-          pulumi login  ${PULUMI_ACCESS_TOKEN}
+          pulumi login  pul-c370a1ee07c84f043143d607306af671483a8ab8
       - name: Create Pulumi Stack
         run: |
           pulumi stack init ${PULUMI_STACK}
