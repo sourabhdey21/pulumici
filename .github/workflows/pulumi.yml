@@ -27,7 +27,7 @@ jobs:
         uses: pulumi/action-install-pulumi-cli@v1
 
       - name: Create Pulumi Stack
-        run: pulumi stack init dev
+        run: pulumi stack init gthbackend
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
 
