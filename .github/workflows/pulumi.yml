@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  deploy:
+  pulumi-deploy:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -35,8 +35,8 @@ jobs:
       
       - name: Create Pulumi Stack
         run: |
+          pulumi stack init  pulumicistack2
           pulumi login s3://pulumibackendprod1
-          pulumi stack select  pulumicistack2
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049' 
       

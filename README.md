@@ -1,1 +1,1 @@
-# pulumici
+# pulumi configuration
