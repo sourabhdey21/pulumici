@@ -8,7 +8,7 @@ env:
   PULUMI_STACK: aws_s3
 jobs:
   setup-and-preview:
-    runs-on:  pulumi/pulumi
+    runs-on:  ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
