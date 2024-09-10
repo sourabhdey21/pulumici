@@ -2,15 +2,18 @@
 
 import pulumi
 from pulumi_aws import s3
+import pulumi_aws as aws
+
 
 # Create an AWS resource (S3 Bucket)
 bucket = s3.Bucket('pulumi-bucket')
 
-# Export the name of the bucket
-pulumi.export('bucket_name', bucket.id)
+# Create a new VPC
+vpc = aws.ec2.Vpc("my-vpc",
+    cidr_block="10.0.0.0/16",
+    tags={
+        "Name": "pulumi-vpc",
+    })
 
-# Create an AWS resource (VPC)
-vpc = s3.Vpc('pulumi-vpc', cidr_block='10.0.0.0/16')
-pulumi.export('vpc_id', vpc.id)
-
-
+# Export the VPC ID
+pulumi.export("vpc_id", vpc.id)
