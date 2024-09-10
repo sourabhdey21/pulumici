@@ -35,8 +35,8 @@ jobs:
       
       - name: Create Pulumi Stack
         run: |
-          pulumi stack init pulumicistack2
-          pulumi config set pulumi:backend-url s3://pulumibackendprod1/pulumi-state.json
+          pulumi login s3://pulumibackendprod1
+          pulumi stack init pulumicistack3
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049' 
       
