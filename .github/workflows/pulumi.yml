@@ -35,18 +35,22 @@ jobs:
       
       - name: Create Pulumi Stack
         run: |
-          pulumi stack init  pulumicistack5
+          pulumi stack init  pulumicistack6
           pulumi login s3://pulumibackendprod1
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049' 
       
       - name: Pulumi Preview
-        run: pulumi preview
+        run: |
+          pulumi stack select pulumicistack6
+          pulumi preview
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
           
 
       - name: Pulumi Up
-        run: pulumi up --yes
+        run: |
+          pulumi select pulumicistack6
+          pulumi up --yes
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
