@@ -12,7 +12,16 @@ bucket = s3.Bucket('jarvis-bucket')
 vpc = aws.ec2.Vpc("my-vpc",
     cidr_block="10.1.0.0/16",
     tags={
-        "Name": "my-vpc",
+        "Name": "jarvis-vpc",
+    })
+
+# Create an internet gateway
+igw = aws.ec2.InternetGateway("my-igw",
+    vpc_id=vpc.id,
+    tags={
+        "tags": [
+            {"key": "Name", "value": "jarvis-igw"},
+        ],
     })
 
 # Export the VPC ID
