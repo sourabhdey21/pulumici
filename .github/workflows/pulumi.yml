@@ -25,18 +25,20 @@ jobs:
 
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v1
-
-      - name: Create Pulumi Stack
-        run: pulumi stack init pulumicistack1
-        env:
-          PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Change to your desired region  
+          aws-region: us-east-1  # Change to your desired region 
+      
+      - name: Create Pulumi Stack
+        run: |
+          pulumi stack init pulumicistack2
+          pulumi config set pulumi:backend-url s3://pulumibackendprod1/pulumi-state.json
+        env:
+          PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049' 
       
       - name: Pulumi Preview
         run: pulumi preview
