@@ -1,0 +1,32 @@
+name: Destroy EC2 Instance
+on: workflow_dispatch
+env:
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    AWS_REGION: ${{ secrets.AWS_REGION }}  
+    PULUMI_STACK: aws_ec2
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./aws_ec2
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install pulumi pulumi_aws
+
+    - name: Select Pulumi Stack
+      run: pulumi stack select ${PULUMI_STACK}
+
+    - name: Destroy
+      run: | 
+        pulumi down --yes
