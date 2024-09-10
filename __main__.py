@@ -6,13 +6,13 @@ import pulumi_aws as aws
 
 
 # Create an AWS resource (S3 Bucket)
-bucket = s3.Bucket('pulumi-bucket')
+bucket = s3.Bucket('jarvis-bucket')
 
 # Create a new VPC
 vpc = aws.ec2.Vpc("my-vpc",
-    cidr_block="10.0.0.0/16",
+    cidr_block="10.1.0.0/16",
     tags={
-        "Name": "pulumi-vpc",
+        "Name": "my-vpc",
     })
 
 # Export the VPC ID
