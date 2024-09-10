@@ -26,6 +26,9 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v1
 
+      - name: Create Pulumi Stack
+        run: pulumi stack init dev
+
       - name: Pulumi Preview
         run: pulumi preview
         env:
