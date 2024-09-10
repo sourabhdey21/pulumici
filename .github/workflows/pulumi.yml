@@ -35,14 +35,14 @@ jobs:
       
       - name: Create Pulumi Stack
         run: |
-          pulumi stack init  pulumicistack6
+          pulumi stack init  pulumicistack7
           pulumi login s3://pulumibackendprod1
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049' 
       
       - name: Pulumi Preview
         run: |
-          pulumi stack select pulumicistack6
+          pulumi stack select pulumicistack7
           pulumi preview
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
@@ -50,7 +50,7 @@ jobs:
 
       - name: Pulumi Up
         run: |
-          pulumi select pulumicistack6
+          pulumi stack select pulumicistack7 || pulumi stack init pulumicistack7
           pulumi up --yes
         env:
           PULUMI_ACCESS_TOKEN: 'pul-fb44b770d22d7c870dbe0f599d0b516872de2049'
