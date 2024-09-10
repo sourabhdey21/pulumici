@@ -18,9 +18,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pulumi pulumi_aws
-      - name: Login to Pulumi
-        run: |
-          pulumi login  pul-c370a1ee07c84f043143d607306af671483a8ab8
       - name: Create Pulumi Stack
         run: |
           pulumi stack init ${PULUMI_STACK}

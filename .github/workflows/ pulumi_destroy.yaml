@@ -22,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pulumi pulumi_aws
+        pip3 install pulumi pulumi_aws
 
     - name: Select Pulumi Stack
       run: pulumi stack select ${PULUMI_STACK}
