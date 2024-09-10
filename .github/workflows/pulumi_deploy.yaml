@@ -20,7 +20,7 @@ jobs:
           pip install pulumi pulumi_aws
       - name: Login to Pulumi
         run: |
-          pulumi login --api-token ${PULUMI_ACCESS_TOKEN}
+          pulumi login  ${PULUMI_ACCESS_TOKEN}
       - name: Create Pulumi Stack
         run: |
           pulumi stack init ${PULUMI_STACK}
